@@ -40,16 +40,17 @@ const timer = {
     start() {
       if (this.isActive) return;
       this.isActive = true;
-    this.intervalId = setInterval(() => {
-        const currentTime = Date.now()
-        const deltaTime = presentTime - currentTime ;
+      
+      this.intervalId = setInterval(() => {
+     const currentTime = Date.now()
+     const deltaTime = presentTime - currentTime;
+     if(deltaTime<1000)clearInterval(this.intervalId);
+      console.log(deltaTime)
         const convertTime = convertMs(deltaTime);
         changeHtmlValues(convertTime)
-         console.log(this.intervalId)
-      },1000)
+         },1000)
   },
- 
-}
+ }
 
   
 function pad(value) {
